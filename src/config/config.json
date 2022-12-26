@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "superpassword",
+    "database": "airline_booking_service_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
