@@ -1,4 +1,4 @@
-const {booking} = require("../models/index");
+const {Booking} = require("../models/index");
 
 class bookingService {
 
@@ -6,7 +6,7 @@ class bookingService {
 
         try {
 
-            const response = await booking.create(data);
+            const response = await Booking.create(data);
             return response;
 
         } catch (error) {

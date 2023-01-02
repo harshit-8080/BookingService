@@ -9,7 +9,7 @@ const setupAndStartServer = async (req, res) => {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
-    app.use(bookingRouter);
+    app.use("/booking",bookingRouter);
 
 
     app.listen(PORT, (req, res) => {
