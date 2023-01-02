@@ -54,3 +54,72 @@ exports.createBooking = async (req, res) => {
         })
     }
 }
+
+exports.getBookingDetail = async (req, res) => {
+
+    try {
+
+       const response = await bookingObj.getBookingDetail(req.params.bookingId);
+        return res.status(201).json({
+
+            data:response,
+            sucess:true,
+            message:"Booking Fetched Sucessfully",
+            err:{}
+
+        })
+
+    } catch (error) {
+        console.log("Error = ",error);
+        return res.status(500).json({
+            "msg":"internal server error"
+        })
+    }
+
+}
+
+exports.getAllBooking = async (req, res) => {
+
+    try {
+
+       const response = await bookingObj.getAllBooking();
+        return res.status(201).json({
+
+            data:response,
+            sucess:true,
+            message:"All Booking Fetched Sucessfully",
+            err:{}
+
+        })
+
+    } catch (error) {
+        console.log("Error = ",error);
+        return res.status(500).json({
+            "msg":"internal server error"
+        })
+    }
+
+}
+
+exports.cancelBooking = async (req, res) => {
+
+    try {
+
+        const response = await bookingObj.cancelBooking(req.params.bookingId);
+        return res.status(201).json({
+
+            data:response,
+            sucess:true,
+            message:"Booking Cancelled and Flight Seat Updated Sucessfully",
+            err:{}
+
+        })
+
+    } catch (error) {
+        console.log("Error = ",error);
+        return res.status(500).json({
+            "msg":"internal server error"
+        })
+    }
+
+}
