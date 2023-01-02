@@ -6,4 +6,10 @@ const bookingRouter = express.Router();
 
 bookingRouter.post("/book", bookingController.createBooking);
 
+bookingRouter.get("/book/:bookingId", bookingController.getBookingDetail);
+
+bookingRouter.get("/bookings", bookingController.getAllBooking);
+
+bookingRouter.patch("/book/:bookingId", bookingController.cancelBooking);
+
 module.exports = bookingRouter;
