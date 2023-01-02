@@ -24,7 +24,7 @@ exports.createBooking = async (req, res) => {
         const data = {
             flightID:req.body.flightId,
             userID:req.body.userID,
-            status:"Booked",
+            status:"InProgress",
             noOfSeats:req.body.noOfSeats,
             totalCost:req.body.noOfSeats * flightDetails.price
         };
@@ -35,6 +35,9 @@ exports.createBooking = async (req, res) => {
             totalSeats:flightDetails.totalSeats - result.noOfSeats
         })
 
+        result.status = "Booked";
+        await result.save();
+        
         return res.status(201).json({
 
             data:result,
