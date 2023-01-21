@@ -3,6 +3,8 @@ const bookingController = require("../controllers/booking.controller");
 
 const bookingRouter = express.Router();
 
+bookingRouter.post("/publish", bookingController.sendDataToQueue);
+
 bookingRouter.post("/book", bookingController.createBooking);
 
 bookingRouter.get("/book/:bookingId", bookingController.getBookingDetail);
