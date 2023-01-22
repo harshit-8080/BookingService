@@ -8,10 +8,24 @@ const {
 const { createChannel, publish } = require("../utils/channel");
 
 class BookingController {
-  async sendDataToQueue(req, res) {
+  //TODO  ==> Use this method for sending tickets details
+  async sendTicketToUser(req, res) {
     try {
       const channel = await createChannel();
-      const data = { message: "scucess" };
+      const data = req.body;
+
+      /**
+       * {
+            "data": {
+                "subject": "Confirmations mail for your ticket booking"
+                "content": "This is Mail is to inform you that your ticket is booked successfully and we will keep sending you remainder mail every day",
+                "recepientEmail": "harshitrajlnctcse@gmail.com",
+                "notificationTime": "2023-01-22T00:22:47.744Z"
+            },
+            "event": "CREATE_TICKET"
+          }
+       */
+
       publish(channel, REMINDER_BINDING_KEY, JSON.stringify(data));
       return res.status(200).json({
         response: "published successfully",
